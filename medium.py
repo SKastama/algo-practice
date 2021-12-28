@@ -43,7 +43,6 @@ def function3(string):
         for i in range(start, len(string)):
             if string[i] in current:
                 longest= max(longest, len(current))
-                print(current)
                 current= ""
                 break
             else:
@@ -65,7 +64,6 @@ def function3Alternative(string):
             idx= start
         elif string[idx] in current:
             longest= max(longest, len(current))
-            print(current)
             current= ""
             start+= 1
             idx= start
