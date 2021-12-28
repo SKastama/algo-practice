@@ -9,6 +9,17 @@ def function1(string1, string2):
 
 # print(function1("abcdegfhijk", "abfg"))
 
+
+# Question 1: Alternative way but out of order
+def function1Alternate(string1, string2):
+    char1= set(string1)
+    char2= set(string2)
+    result= char1 - char2
+    return "".join(sorted(list(result)))
+
+# print(function1Alternate("abcdegfhijk", "abfg"))
+
+
 # Question 2
 def function2(string):
     charCount= {}
@@ -21,4 +32,8 @@ def function2(string):
             return key
 
 # print(function2("aabb"))
-    
+
+
+# # Question 3
+# def function3(string):
+
