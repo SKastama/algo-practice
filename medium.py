@@ -10,7 +10,7 @@ def function1(string1, string2):
 # print(function1("abcdegfhijk", "abfg"))
 
 
-# Question 1: Alternative way but out of order
+# Question 1: Alternative way but cant repeat charactors
 def function1Alternate(string1, string2):
     char1= set(string1)
     char2= set(string2)
@@ -34,6 +34,21 @@ def function2(string):
 # print(function2("aabb"))
 
 
-# # Question 3
-# def function3(string):
+# Question 3
+def function3(string):
+    longest= 0
+    current= ""
+    start= 0
+    while start < len(string):
+        for i in range(start, len(string)):
+            if string[i] in current:
+                longest= max(longest, len(current))
+                print(current)
+                current= ""
+                break
+            else:
+                current+= string[i]
+        start+= 1
+    return longest
 
+print(function3("Hello there"))
