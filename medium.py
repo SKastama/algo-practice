@@ -51,4 +51,24 @@ def function3(string):
         start+= 1
     return longest
 
-print(function3("Hello there"))
+# print(function3("Hello there"))
+
+# Question 3: Alternative and optimized way
+def function3Alternative(string):
+    longest= 0
+    current= ""
+    start= 0
+    idx= start
+    while start < len(string) - 1 and idx < len(string):
+        if string[idx] in current:
+            longest= max(longest, len(current))
+            print(current)
+            current= ""
+            start+= 1
+            idx= start
+        else:
+            current+= string[idx]
+            idx+= 1
+    return longest
+
+print(function3Alternative("Hello there"))
