@@ -59,8 +59,11 @@ def function3Alternative(string):
     current= ""
     start= 0
     idx= start
-    while start < len(string) - 1 and idx < len(string):
-        if string[idx] in current:
+    while start < len(string):
+        if idx >= len(string):
+            start+= 1
+            idx= start
+        elif string[idx] in current:
             longest= max(longest, len(current))
             print(current)
             current= ""
