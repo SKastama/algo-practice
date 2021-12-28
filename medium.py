@@ -72,4 +72,17 @@ def function3Alternative(string):
             idx+= 1
     return longest
 
-print(function3Alternative("Hello there"))
+# print(function3Alternative("Hello there"))
+
+# Algo expert
+# Number 25
+def kadanesAlgorithm(array):
+    maxEndHere= array[0]
+    maxSoFar= array[0]
+    for i in range(1, len(array)):
+        maxEndHere+= array[i]
+        maxEndHere= max(maxEndHere, array[i])
+        maxSoFar= max(maxSoFar, maxEndHere)
+    return maxSoFar
+
+print(kadanesAlgorithm([3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]))
