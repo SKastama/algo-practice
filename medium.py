@@ -9,5 +9,16 @@ def function1(string1, string2):
 
 # print(function1("abcdegfhijk", "abfg"))
 
+# Question 2
+def function2(string):
+    charCount= {}
+    for i in range(len(string)):
+        if string[i] not in charCount:
+            charCount[string[i]]= 0
+        charCount[string[i]]+= 1
+    for key, val in charCount.items():
+        if val == 1:
+            return key
 
+# print(function2("aabb"))
     
