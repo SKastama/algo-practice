@@ -85,4 +85,26 @@ def kadanesAlgorithm(array):
         maxSoFar= max(maxSoFar, maxEndHere)
     return maxSoFar
 
-print(kadanesAlgorithm([3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]))
+# print(kadanesAlgorithm([3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]))
+
+import math
+# Number 26
+def hasSingleCycle(array):
+    idxsSeen= set()
+    i= 0
+    while True:
+        newIdx= (i + array[i])%(len(array))
+        if newIdx not in idxsSeen:
+            idxsSeen.add(newIdx)
+        else:
+            return False
+        if len(idxsSeen) == len(array):
+            break
+        i= newIdx
+    return True
+    
+
+print(hasSingleCycle([1, 2]))
+        
+
+        
