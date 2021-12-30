@@ -115,35 +115,45 @@ def riverSizes(matrix):
     i= nodeRow
     j= nodeCol
     while nodeRow < len(matrix):
-        if riverIdxs[i][j] == False and matrix[i][j] != 0:
+        if riverIdxs[i][j] == False and matrix[i][j] == 1:
             riverIdxs[i][j]= True
             localLen+= 1
             if i+1 < len(matrix) and matrix[i+1][j] == 1 and riverIdxs[i+1][j] == False:
                 i+= 1
-                continue
             elif i-1 >= 0 and matrix[i-1][j] == 1 and riverIdxs[i-1][j] == False:
                 i-= 1
-                continue
             elif j+1 < len(matrix[i]) and matrix[i][j+1] == 1 and riverIdxs[i][j+1] == False:
                 j+= 1
-                continue
             elif j-1 >= 0 and matrix[i][j-1] == 1 and riverIdxs[i][j-1] == False:
                 j-= 1
-                continue
             else:
                 riverLen.append(localLen)
                 localLen= 0
-        if j+1 < len(matrix[i]):
-            nodeCol+=1
-            j= nodeCol
-        elif j+1 == len(matrix[i]) and i+1 < len(matrix):
-            nodeRow+= 1
-            i= nodeRow
-            nodeCol= 0
-            j= nodeCol
-        elif i+1 == len(matrix):
-            break
-    return riverIdxs
+                if j+1 < len(matrix[i]):
+                    nodeCol+=1
+                    j= nodeCol
+                elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+                    nodeRow+= 1
+                    i= nodeRow
+                    nodeCol= 0
+                    j= nodeCol
+                elif i+1 == len(matrix):
+                    break
+        elif riverIdxs[i][j] == False and matrix[i][j] == 0:
+            riverIdxs[i][j]= True
+        else:
+            if j+1 < len(matrix[i]):
+                nodeCol+=1
+                j+= 1
+            elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+                nodeRow+= 1
+                i+= 1
+                nodeCol= 0
+                j= 0
+            elif i+1 == len(matrix):
+                break
+    print(riverIdxs)
+    return riverLen
 
 matrix1= [
     [1, 0, 0, 1, 0],
