@@ -75,6 +75,38 @@ def function3Alternative(string):
 # print(function3Alternative("Hello there"))
 
 # Algo expert
+# Number 13
+def minHeightBst(array):
+    return callMinHeightBst(array, 0, len(array)-1)
+	
+def callMinHeightBst(array, start, end):
+	if start > end:
+		return
+	middle= (end+start)//2
+	tree= BST(array[middle])
+	tree.left= callMinHeightBst(array, start, middle-1)
+	tree.right= callMinHeightBst(array, middle+1, end)
+	return tree
+	
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = BST(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BST(value)
+            else:
+                self.right.insert(value)
+
+
 # Number 25
 def kadanesAlgorithm(array):
     maxEndHere= array[0]
@@ -105,61 +137,61 @@ def hasSingleCycle(array):
     
 # print(hasSingleCycle([1, 2]))
 
-# Number 27
-def riverSizes(matrix):
-    riverLen= []
-    riverIdxs= [[False for value in row] for row in matrix]
-    localLen= 0
-    nodeRow= 0
-    nodeCol= 0
-    i= nodeRow
-    j= nodeCol
-    while nodeRow < len(matrix):
-        if riverIdxs[i][j] == False and matrix[i][j] == 1:
-            riverIdxs[i][j]= True
-            localLen+= 1
-            if i+1 < len(matrix) and matrix[i+1][j] == 1 and riverIdxs[i+1][j] == False:
-                i+= 1
-            elif i-1 >= 0 and matrix[i-1][j] == 1 and riverIdxs[i-1][j] == False:
-                i-= 1
-            elif j+1 < len(matrix[i]) and matrix[i][j+1] == 1 and riverIdxs[i][j+1] == False:
-                j+= 1
-            elif j-1 >= 0 and matrix[i][j-1] == 1 and riverIdxs[i][j-1] == False:
-                j-= 1
-            else:
-                riverLen.append(localLen)
-                localLen= 0
-                if j+1 < len(matrix[i]):
-                    nodeCol+=1
-                    j= nodeCol
-                elif j+1 == len(matrix[i]) and i+1 < len(matrix):
-                    nodeRow+= 1
-                    i= nodeRow
-                    nodeCol= 0
-                    j= nodeCol
-                elif i+1 == len(matrix):
-                    break
-        elif riverIdxs[i][j] == False and matrix[i][j] == 0:
-            riverIdxs[i][j]= True
-        else:
-            if j+1 < len(matrix[i]):
-                nodeCol+=1
-                j+= 1
-            elif j+1 == len(matrix[i]) and i+1 < len(matrix):
-                nodeRow+= 1
-                i+= 1
-                nodeCol= 0
-                j= 0
-            elif i+1 == len(matrix):
-                break
-    print(riverIdxs)
-    return riverLen
+# Number 27 in progress
+# def riverSizes(matrix):
+#     riverLen= []
+#     riverIdxs= [[False for value in row] for row in matrix]
+#     localLen= 0
+#     nodeRow= 0
+#     nodeCol= 0
+#     i= nodeRow
+#     j= nodeCol
+#     while nodeRow < len(matrix):
+#         if riverIdxs[i][j] == False and matrix[i][j] == 1:
+#             riverIdxs[i][j]= True
+#             localLen+= 1
+#             if i+1 < len(matrix) and matrix[i+1][j] == 1 and riverIdxs[i+1][j] == False:
+#                 i+= 1
+#             elif i-1 >= 0 and matrix[i-1][j] == 1 and riverIdxs[i-1][j] == False:
+#                 i-= 1
+#             elif j+1 < len(matrix[i]) and matrix[i][j+1] == 1 and riverIdxs[i][j+1] == False:
+#                 j+= 1
+#             elif j-1 >= 0 and matrix[i][j-1] == 1 and riverIdxs[i][j-1] == False:
+#                 j-= 1
+#             else:
+#                 riverLen.append(localLen)
+#                 localLen= 0
+#                 if j+1 < len(matrix[i]):
+#                     nodeCol+=1
+#                     j= nodeCol
+#                 elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+#                     nodeRow+= 1
+#                     i= nodeRow
+#                     nodeCol= 0
+#                     j= nodeCol
+#                 elif i+1 == len(matrix):
+#                     break
+#         elif riverIdxs[i][j] == False and matrix[i][j] == 0:
+#             riverIdxs[i][j]= True
+#         else:
+#             if j+1 < len(matrix[i]):
+#                 nodeCol+=1
+#                 j+= 1
+#             elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+#                 nodeRow+= 1
+#                 i+= 1
+#                 nodeCol= 0
+#                 j= 0
+#             elif i+1 == len(matrix):
+#                 break
+#     print(riverIdxs)
+#     return riverLen
 
-matrix1= [
-    [1, 0, 0, 1, 0],
-    [1, 0, 1, 0, 0],
-    [0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1],
-    [1, 0, 1, 1, 0]
-]
-print(riverSizes(matrix1))
+# matrix1= [
+#     [1, 0, 0, 1, 0],
+#     [1, 0, 1, 0, 0],
+#     [0, 0, 1, 0, 1],
+#     [1, 0, 1, 0, 1],
+#     [1, 0, 1, 1, 0]
+# ]
+# print(riverSizes(matrix1))
