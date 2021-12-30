@@ -103,8 +103,53 @@ def hasSingleCycle(array):
         i= newIdx
     return True
     
+# print(hasSingleCycle([1, 2]))
 
-print(hasSingleCycle([1, 2]))
-        
+# Number 27
+def riverSizes(matrix):
+    riverLen= []
+    riverIdxs= [[False for value in row] for row in matrix]
+    localLen= 0
+    nodeRow= 0
+    nodeCol= 0
+    i= nodeRow
+    j= nodeCol
+    while nodeRow < len(matrix):
+        if riverIdxs[i][j] == False and matrix[i][j] != 0:
+            riverIdxs[i][j]= True
+            localLen+= 1
+            if i+1 < len(matrix) and matrix[i+1][j] == 1 and riverIdxs[i+1][j] == False:
+                i+= 1
+                continue
+            elif i-1 >= 0 and matrix[i-1][j] == 1 and riverIdxs[i-1][j] == False:
+                i-= 1
+                continue
+            elif j+1 < len(matrix[i]) and matrix[i][j+1] == 1 and riverIdxs[i][j+1] == False:
+                j+= 1
+                continue
+            elif j-1 >= 0 and matrix[i][j-1] == 1 and riverIdxs[i][j-1] == False:
+                j-= 1
+                continue
+            else:
+                riverLen.append(localLen)
+                localLen= 0
+        if j+1 < len(matrix[i]):
+            nodeCol+=1
+            j= nodeCol
+        elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+            nodeRow+= 1
+            i= nodeRow
+            nodeCol= 0
+            j= nodeCol
+        elif i+1 == len(matrix):
+            break
+    return riverIdxs
 
-        
+matrix1= [
+    [1, 0, 0, 1, 0],
+    [1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1],
+    [1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 0]
+]
+print(riverSizes(matrix1))
