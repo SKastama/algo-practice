@@ -31,7 +31,7 @@ def function2(string):
         if val == 1:
             return key
 
-# print(function2("aabb"))
+# print(function2("abbcd"))
 
 
 # Question 3
@@ -72,7 +72,7 @@ def function3Alternative(string):
             idx+= 1
     return longest
 
-# print(function3Alternative("Hello there"))
+print(function3Alternative("Hello there"))
 
 # Algo expert
 # Number 13

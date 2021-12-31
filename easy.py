@@ -67,4 +67,17 @@ def shiftLargest(largeArray, idx, num):
         else:
             largeArray[j]= largeArray[j+1]
 
-print(findThreeLargestNumbers([1, 17, -7, -17, -27, 18, 141, 8, 7, 7, 541]))
+# print(findThreeLargestNumbers([1, 17, -7, -17, -27, 18, 141, 8, 7, 7, 541]))
+
+def caesarCipherEncryptor(string, key):
+    alphabet= 'abcdefghijklmnopqrstuvwxyz'
+    ouput= ''
+    i= 0
+    while i < len(string):
+        idx= alphabet.index(string[i])
+        idxMoved= (idx+key)%26
+        ouput+= alphabet[idxMoved]
+        i+= 1
+    return ouput
+
+print(caesarCipherEncryptor('abc', 28))
