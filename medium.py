@@ -106,6 +106,27 @@ class BST:
             else:
                 self.right.insert(value)
 
+# Number 14
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def findKthLargestValueInBst(tree, k):
+	array= []
+	callFindKth(tree, k, array)
+	return array[len(array)-k]
+
+def callFindKth(tree, k, array):
+	if tree is None:
+		return
+	callFindKth(tree.left, k, array)
+	array.append(tree.value)
+	callFindKth(tree.right, k, array)
+	return array
+
 
 # Number 25
 def kadanesAlgorithm(array):
